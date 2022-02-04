@@ -4,7 +4,9 @@ const changePasswordForm = document.querySelector('.changePass');
 const updateDetails = document.querySelector('.updateDetails');
 const forgotPass = document.querySelector('.forgotPass');
 const resetPass = document.querySelector('.resetPass');
-
+const host = window.location.hostname;
+const port = window.location.port;
+console.log(host, port);
 console.log(`hi from login`);
 if (loginForm)
   loginForm.addEventListener('submit', async (e) => {
