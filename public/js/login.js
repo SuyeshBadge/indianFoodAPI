@@ -19,7 +19,7 @@ if (loginForm)
     try {
       const res = await axios({
         method: 'POST',
-        url: 'https://indian-food-db.herokuapp.com/user/login',
+        url: `${url}/user/login`,
         data: {
           email,
           password,
@@ -45,7 +45,7 @@ if (signupForm)
     try {
       const res = await axios({
         method: 'POST',
-        url: 'https://indian-food-db.herokuapp.com/user/signup',
+        url: `${url}/user/signup`,
         data: {
           name,
           email,
@@ -73,7 +73,7 @@ if (updateDetails) {
     try {
       const res = await axios({
         method: 'PATCH',
-        url: 'https://indian-food-db.herokuapp.com/user/updateMe',
+        url: `${url}/user/updateMe`,
         data: {
           name,
           email,
@@ -102,7 +102,7 @@ if (changePasswordForm)
     try {
       const res = await axios({
         method: 'PATCH',
-        url: 'https://indian-food-db.herokuapp.com/user/updatepassword',
+        url: `${url}/user/updatepassword`,
         data: {
           passwordCurrent,
           password,
@@ -126,7 +126,7 @@ if (forgotPass)
     try {
       const res = await axios({
         method: 'POST',
-        url: 'https://indian-food-db.herokuapp.com/user/forgotPassword',
+        url: `${url}/user/forgotPassword`,
         data: {
           email,
         },
@@ -153,7 +153,7 @@ if (resetPass) {
     try {
       const res = await axios({
         method: 'PATCH',
-        url: `https://indian-food-db.herokuapp.com/user/resetPassword?token=${resettoken}`,
+        url: `${url}/user/resetPassword?token=${resettoken}`,
         data: {
           password,
           passwordConfirm,
