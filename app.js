@@ -1,6 +1,7 @@
 //imports
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const app = express();
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -30,6 +31,8 @@ const limiter = rateLimit({
 });
 
 const hbs = require('express-handlebars');
+
+app.use(cors({ origin: '*' }));
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine(
