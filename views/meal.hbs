@@ -1,0 +1,51 @@
+<input type='hidden' id='mealID' value='{{meal._id}}' />
+<input type='hidden' id='user' value='{{@root.user._id}}' />
+{{! <input type="hidden" name=""> }}
+<style>
+  body {background-image: "./img/bg-main.jpg";
+    font-family: sans-serif; color: white; } .small { font-size: small; }
+  .thumb { max-width: 380px; border-radius: 8px; /* display: flex; */
+  align-items: center; } .card { background-color: #302f31cc; margin: 15px;
+  padding: 15px; padding-left: 15px; border-radius: 5px; max-width: 700px;
+  min-width: 400px; } .card-title { font-size: xx-large; font-weight: 600;
+  padding: 15px; margin: 1rem; } .card-body { font-size: larger; text-align:
+  left; } .table { display: grid; grid-template-columns: repeat(2, 1fr); /*
+  grid-template-rows: ; */ grid-column-gap: 14px; /* grid-row-gap: 5px; */
+  padding: 5px; } .div1 { grid-area: 1 / 1 / 2 / 2; } .div2 { grid-area: 1 / 2 /
+  2 / 3; } h2 { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet
+  MS', sans-serif; font-style: italic; font-size: x-large; } h3 { font-weight:
+  300; } .inst { margin: 15px; }
+</style>
+
+<div class='pt-24 bg-black text-white'>
+
+  <div>
+  </div>
+  <div class='flex-col justify-center mx-auto p-5 w-2/3'>
+    <div class='card-title p-5 text-center'>
+      {{meal.TranslatedRecipeName}}
+      <span class='small'> {{meal.Cuisine}}</span>
+      <a
+        href='/addFavorite/{{meal._id}}'
+        id='fav-btn'
+        class='float-right bg-red-200 text-center py-2 px-3 text-4xl rounded-full'
+      > ❤️ </a>
+    </div>
+    <div class='card-body'>
+      <div>
+        <div class='float-left px-10'>
+          <img class='thumb' src='{{meal.image-url}}' alt='' />
+        </div>
+        <div>
+          <h2>Ingredients
+            <span class='small'> ({{meal.Ingredient-count}})</span>
+          </h2>
+          {{meal.TranslatedIngredients}}
+          <div class='py-8'></div>
+          <h2 class=''>Instructions ({{meal.TotalTimeInMins}} mins)</h2>
+          <h3>{{meal.TranslatedInstructions}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

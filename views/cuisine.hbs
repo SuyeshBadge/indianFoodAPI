@@ -1,0 +1,72 @@
+<input type='text' value='{{page}}' id='page' hidden />
+<input type='text' value='{{data}}' id='data' hidden />
+{{! Cuisine Selection }}
+<div class='pt-24 text-center p-8 border-0 rounded-md'>
+  <label for='cuisine' class='text-2xl'>Select the cuisine</label>
+  <form method='get'>
+    <select
+      name='cuisine'
+      id='cuisine'
+      class='text-black h-10 px-3 rounded m-4'
+    >
+      <option value='none' selected disabled hidden>Select an Option</option>
+      {{#each cuisine}}
+        <option value='{{this}}'>{{this}}</option>
+      {{/each}}
+
+    </select>
+    <button
+      id='btn-cuisine'
+      class='font-bold text-2xl bg-blue-600 rounded px-6 h-10'
+    >Ok</button>
+  </form>
+
+  {{! Pafination }}
+  <div
+    class='fixed flex w-full justify-between mb-20 font-bold -mt-5 transition transition-all ease-in-out'
+  >
+    <div>
+      <a
+        class='transform rotate-180 bg-blue-100 text-3xl px-5 -mx-6 py-3 opacity-50 hover:opacity-100 rounded-full text-black'
+        href='/cuisine?cuisine={{curCuisine}}'
+        id='prev'
+      > ⮜</a>
+    </div>
+    <div>
+      <a
+        class='bg-blue-100 text-3xl px-5 py-3 opacity-50 hover:opacity-100 rounded-full text-black mr-10'
+        href='/cuisine?cuisine={{curCuisine}}'
+        id='next'
+      > ⮞</a>
+    </div>
+  </div>
+</div>
+{{! Meal Cards }}
+<div class='grid grid-cols-3 content-between justify-items-center'>
+  {{#each data as |meal|}}
+    <div class='bg-gray-600 max-w-md p-4 text-left rounded-md m-5'>
+
+      <div class='text-2xl mb-10'>
+        <span class='text-gray-400 font-bold'>{{meal.Cuisine}}</span><br />
+        {{meal.TranslatedRecipeName}}
+      </div>
+      <div class='text-lg flex flex-col justify-center'>
+        <img class='rounded-xl h-auto' src='{{meal.image-url}}' alt='' />
+
+        <h3 class='my-4 text-center'>
+          Ingredients:
+          {{meal.Ingredient-count}}
+          Total Time:
+          {{meal.TotalTimeInMins}}
+        </h3>
+        <a
+          href='/id/{{meal._id}}'
+          class='font-bold bg-gray-500 px-4 py-1 rounded text-center'
+        >Open</a>
+
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+<script src='/js/cuisine.js'></script>

@@ -1,0 +1,39 @@
+<header>
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link
+    href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css'
+    rel='stylesheet'
+  />
+  <title>{{title}}</title>
+</header>
+
+<nav
+  class='fixed w-full text-white bg-gray-900 flex justify-between px-8 py-5 gap-10 text-2xl'
+>
+  <a href='/'>The Indian Food DB</a>
+  <div class='flex gap-10'>
+    <a href='/random-meal'> Random meal</a>
+    <a
+      target='_blank'
+      href='https://documenter.getpostman.com/view/18664915/UVeGpR56'
+    > API</a>
+    {{#if loggedin}}
+
+      <a href='/favorite'> Favorites</a>
+      <a href='/cuisine'> Cuisines</a>
+    {{/if}}
+  </div>
+  <ul class='flex gap-5'>
+    {{#if loggedin}}
+
+      <li><a href='/me'> {{@root.user.name}}</a></li>
+      <li><a class='logout' href='/'> Logout</a></li>
+    {{else}}
+      <li><a href='/login'> Login</a></li>
+      <li><a href='/signup'> Sign Up</a></li>
+    {{/if}}
+
+  </ul>
+</nav>
