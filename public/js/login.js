@@ -6,8 +6,9 @@ const forgotPass = document.querySelector('.forgotPass');
 const resetPass = document.querySelector('.resetPass');
 const host = window.location.hostname;
 const port = window.location.port;
-console.log(host, port);
-console.log(`hi from login`);
+console.log(host, port, window.location.protocol);
+const url = `${window.location.protocol}//${host}:${port}`;
+console.log(`hi from login ${url}`);
 if (loginForm)
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
