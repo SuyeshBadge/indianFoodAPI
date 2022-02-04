@@ -4,7 +4,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:8080/user/logout',
+      url: 'https://indian-food-db.herokuapp.com/user/logout',
     });
     if ((res.data.status = 'success')) location.assign('/login');
   } catch (err) {
