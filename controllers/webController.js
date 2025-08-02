@@ -25,7 +25,7 @@ exports.getIndex = catchAsync(async (req, res, next) => {
 
 //random meal
 exports.getRandomMeal = catchAsync(async (req, res, next) => {
-  meal = await Food.findOne({ mealD: getRandomId() });
+    meal = await Food.findOne({ mealD: getRandomId() }).lean();
   res.status(200).render('meal', { meal, title: 'Random Meal' });
 });
 
@@ -37,7 +37,7 @@ exports.getCuisine = catchAsync(async (req, res, next) => {
   let filter = { Cuisine: req.query.cuisine || cuisine[0] };
 
   feature = new APIFeatures(Food.find(filter), req.query).filter().paginate();
-  data = await feature.query;
+    data = await feature.query.lean();
 
   res.status(200).render('cuisine', {
     cuisine,
@@ -52,7 +52,7 @@ exports.getCuisine = catchAsync(async (req, res, next) => {
 exports.getMealById = catchAsync(async (req, res, next) => {
   // console.log(req.locals);
   // console.log(req.params.id);
-  meal = await Food.findById(req.params.id);
+    meal = await Food.findById(req.params.id).lean();
   res.status(200).render('meal', { meal, title: 'Meal' });
 });
 
@@ -140,7 +140,7 @@ exports.getFavorite = catchAsync(async (req, res, next) => {
   feature = new APIFeatures(Favs.findOne({ user: res.locals.user }), req.query)
     .filterOne()
     .paginate();
-  let data = await feature.query.populate('meal');
+    let data = await feature.query.populate('meal').lean();
   // Favs.findOne({ user: res.locals.user }).populate('meal');
   // console.log('data', data);
   if (data) data = data.meal;
