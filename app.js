@@ -32,7 +32,7 @@ const limiter = rateLimit({
 
 const hbs = require('express-handlebars');
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: 'http://localhost:3000' })); // TODO: Make this configurable via environment variable
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine(
